@@ -30,7 +30,7 @@ Material:
     - _LeftLegLowerScale: 0.07
     - _LeftLegMidScale: 0.075
     - _LeftLegUpperScale: 0.07
-    - _Loop: 50
+    - _Loop: 20
     - _Metallic: 0
     - _MinDistance: 0.0243
     - _NormalDelta: 0.0001
@@ -43,7 +43,7 @@ Material:
     - _Scale: 0.1
     - _ScaleSphere: 0.5
     - _ShadowExtraBias: 0
-    - _ShadowLoop: 50
+    - _ShadowLoop: 20
     - _ShadowMinDistance: 0.0342
     - _Smooth: 17.5
     - _TorsoLowerScale: 0.16

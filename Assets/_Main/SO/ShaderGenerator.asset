@@ -211,7 +211,7 @@ MonoBehaviour:
       +\r\n        computeAlbedoPart4 +\r\n        computeAlbedoPart5));\r\n\r\n   
       o.Albedo = final;\r\n}\r"
     folded: 0
-  constants: {fileID: 11400000, guid: b54b57bcc672e49638fe9b2da609c4df, type: 2}
+  constants: {fileID: 11400000, guid: 9c8b2f5a7a56c4e21bee7ca4ccfc6640, type: 2}
   basicFolded: 0
   conditionsFolded: 0
   variablesFolded: 0

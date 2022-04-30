@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+﻿using System.Collections;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -14,7 +14,24 @@ public class TransformProvider : MonoBehaviour
     [SerializeField]
     NameTransformPair[] pairs;
 
-    void Update()
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+
+        StartCoroutine(Check());
+    }
+
+    private IEnumerator Check()
+    {
+        while (true)
+        {
+            Validate();
+
+            yield return new WaitForSeconds(.01F);
+        }
+    }
+
+    private void Validate()
     {
         var renderer = GetComponent<Renderer>();
         if (!renderer) return;
