@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 public class TransformProvider : MonoBehaviour
@@ -10,33 +9,26 @@ public class TransformProvider : MonoBehaviour
         public string name;
         public Transform transform;
     }
+    
+    [SerializeField] private Renderer targetRenderer = null;
 
-    [SerializeField]
-    NameTransformPair[] pairs;
-
+    [SerializeField] private NameTransformPair[] pairs;
+    
     private void Start()
     {
         Application.targetFrameRate = 60;
-
-        StartCoroutine(Check());
     }
 
-    private IEnumerator Check()
+    private void Update()
     {
-        while (true)
-        {
-            Validate();
-
-            yield return new WaitForSeconds(.01F);
-        }
+        Validate();
     }
 
     private void Validate()
     {
-        var renderer = GetComponent<Renderer>();
-        if (!renderer) return;
+        if (!targetRenderer) return;
 
-        var material = renderer.sharedMaterial;
+        var material = targetRenderer.sharedMaterial;
         if (!material) return;
         
         foreach (var pair in pairs)
