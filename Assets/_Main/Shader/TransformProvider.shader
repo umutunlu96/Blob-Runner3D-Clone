@@ -25,12 +25,8 @@ Properties
 _Smooth("Smooth", float) = 17.5
     
 [Header(Color Parameters)]
-_HeadColor("Head Color", Color) = (1.0, 1.0, 1.0, 1.0)
-_TorsoColor("TorsoColor Color", Color) = (1.0, 1.0, 1.0, 1.0)
-_LeftArmColor("LeftArmColor Color", Color) = (1.0, 1.0, 1.0, 1.0)
-_RightArmColor("RightArmColor Color", Color) = (1.0, 1.0, 1.0, 1.0)
-_LeftLegColor("LeftLegColor Color", Color) = (1.0, 1.0, 1.0, 1.0)
-_RightLegColor("RightLegColor Color", Color) = (1.0, 1.0, 1.0, 1.0)
+_BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+
 // @endblock
 }
 
@@ -174,31 +170,11 @@ inline float DistanceFunction(float3 wpos)
 
 // @block PostEffect
 
-float4 _HeadColor;
-float4 _TorsoColor;
-float4 _LeftArmColor;
-float4 _RightArmColor;
-float4 _LeftLegColor;
-float4 _RightLegColor;
-
-fixed3 _colorResult;
+float4 _BaseColor;
 
 inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 {
-    _colorResult =
-        (4 / head) * _HeadColor +
-        (4 / torsoUpper) * _TorsoColor +
-        (4 / torsoLower) * _TorsoColor +
-        (4 / leftArmUpper) * _LeftArmColor +
-        (4 / leftArmLower) * _LeftArmColor +
-        (4 / rightArmUpper) * _RightArmColor +
-        (4 / rightArmLower) * _RightArmColor +
-        (4 / leftLegUpper) * _LeftLegColor +
-        (4 / leftLegLower) * _LeftLegColor +
-        (4 / rightLegUpper) * _RightLegColor +
-        (4 / rightLegLower) * _RightLegColor;
-
-    o.Albedo = normalize(_TorsoColor);
+    o.Albedo = normalize(_BaseColor);
 }
 // @endblock
 

@@ -19,6 +19,7 @@
       <option value="$PROJECT_DIR$/Assets/_Main/Shader/TransformProvider.cs" />
       <option value="$PROJECT_DIR$/Assets/_Main/Scripts/GamePlay/Player/PController.cs" />
       <option value="$PROJECT_DIR$/Assets/_Main/Shader/TransformProvider.shader" />
+      <option value="$PROJECT_DIR$/Assets/_Main/Scripts/Managers/GameManager.cs" />
     </changedPaths>
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
