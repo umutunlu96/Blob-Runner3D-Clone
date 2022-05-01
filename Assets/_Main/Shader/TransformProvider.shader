@@ -127,21 +127,7 @@ float _Smooth;
     float rightLegLower;
     float rightLegMid;
 
-    float result1 ;
-    float result2 ;
-    float result3 ;
-    float result4 ;
-    float result5 ;
-    float result6 ;
-    float result7 ;
-    float result8 ;
-    float result9 ;
-    float result10;
-    float result11;
-    float result12;
-    float result13;
-    float result14;
-    float result15;
+    float result;
 
 inline float DistanceFunction(float3 wpos)
 {
@@ -185,26 +171,24 @@ inline float DistanceFunction(float3 wpos)
     rightLegLower = Capsule(rightLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), 0.07F);
     rightLegMid =  Sphere(rightLegMidPos, 0.06F);
 
-    result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);
-    result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);
-    result3 = SmoothMin(rightArmUpper, rightArmLower, _Smooth);
-    result4 = SmoothMin(leftLegUpper, leftLegLower, _Smooth);
-    result5 = SmoothMin(rightLegUpper, rightLegLower, _Smooth);
-    result6 = SmoothMin(head, torsoMid, _Smooth);
-    result7 = SmoothMin(leftArmMid, rightArmMid, _Smooth);
-    result8 = SmoothMin(leftLegMid, rightLegMid, _Smooth);
+    result = SmoothMin(torsoUpper, torsoLower, _Smooth);
+    result = SmoothMin(result, head, _Smooth);
+    result = SmoothMin(result, torsoMid, _Smooth);
+    result = SmoothMin(result, torsoMidExtra, _Smooth);
+    result = SmoothMin(result, leftArmUpper, _Smooth);
+    result = SmoothMin(result, leftArmLower, _Smooth);
+    result = SmoothMin(result, rightArmUpper, _Smooth);
+    result = SmoothMin(result, rightArmLower, _Smooth);
+    result = SmoothMin(result, leftLegUpper, _Smooth);
+    result = SmoothMin(result, leftLegLower, _Smooth);
+    result = SmoothMin(result, rightLegUpper, _Smooth);
+    result = SmoothMin(result, rightLegLower, _Smooth);
+    result = SmoothMin(result, leftArmMid, _Smooth);
+    result = SmoothMin(result, rightArmMid, _Smooth);
+    result = SmoothMin(result, leftLegMid, _Smooth);
+    result = SmoothMin(result, rightLegMid, _Smooth);
     
-    result9 = SmoothMin(result1, torsoMidExtra, _Smooth);
-    result10 = SmoothMin(result2, result3, _Smooth);
-    result11 = SmoothMin(result4, result5, _Smooth);
-    result12 = SmoothMin(result6, result7, _Smooth);
-    
-    result13 = SmoothMin(result8, result9, _Smooth);
-    result14 = SmoothMin(result10, result11, _Smooth);
-    
-    result15 = SmoothMin(result12, result13, _Smooth);
-    
-    return SmoothMin(result14, result15, _Smooth);
+    return result;
 }
 // @endblock
 
@@ -217,55 +201,30 @@ float4 _RightArmColor;
 float4 _LeftLegColor;
 float4 _RightLegColor;
 
-float4 result1_Color;
-float4 result2_Color;
-float4 result3_Color;
-float4 result4_Color;
-float4 result5_Color;
+fixed3 _colorResult;
 
 inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 {
-    result1_Color = float4(4.0 / head, 4.0 / torsoUpper, 4.0 / torsoMid, 4.0 / torsoLower);
-    result2_Color = float4(4.0 / torsoMidExtra, 4.0 / leftArmUpper, 4.0 / leftArmMid, 4.0 / leftArmLower);
-    result3_Color = float4(4.0 / rightArmUpper, 4.0 / rightArmMid, 4.0 / rightArmLower, 4.0 / leftLegUpper);
-    result4_Color = float4(4.0 / leftLegLower, 4.0 / leftLegMid, 4.0 / rightLegUpper, 4.0 / rightLegLower);
-    result5_Color = float4(4.0 / rightLegMid, 0, 0, 0);
+    _colorResult =
+        (4 / head) * _HeadColor +
+        (4 / torsoUpper) * _TorsoColor +
+        (4 / torsoMid) * _TorsoColor +
+        (4 / torsoLower) * _TorsoColor +
+        (4 / torsoMidExtra) * _TorsoColor +
+        (4 / leftArmUpper) * _LeftArmColor +
+        (4 / leftArmMid) * _LeftArmColor +
+        (4 / leftArmLower) * _LeftArmColor +
+        (4 / rightArmUpper) * _RightArmColor +
+        (4 / rightArmMid) * _RightArmColor +
+        (4 / rightArmLower) * _RightArmColor +
+        (4 / leftLegUpper) * _LeftLegColor +
+        (4 / leftLegLower) * _LeftLegColor +
+        (4 / leftLegMid) * _LeftLegColor +
+        (4 / rightLegUpper) * _RightLegColor +
+        (4 / rightLegLower) * _RightLegColor +
+        (4 / rightLegMid) * _RightLegColor;
 
-    fixed3 computeAlbedoPart1 =
-        result1_Color.x * _HeadColor +
-        result1_Color.y * _TorsoColor +
-        result1_Color.z * _TorsoColor +
-        result1_Color.w * _TorsoColor;
-
-    fixed3 computeAlbedoPart2 =
-        result2_Color.x * _TorsoColor +
-        result2_Color.y * _LeftArmColor +
-        result2_Color.z * _LeftArmColor +
-        result2_Color.w * _LeftArmColor;
-
-    fixed3 computeAlbedoPart3 =
-        result3_Color.x * _RightArmColor +
-        result3_Color.y * _RightArmColor +
-        result3_Color.z * _RightArmColor +
-        result3_Color.w * _LeftLegColor;
-
-    fixed3 computeAlbedoPart4 =
-        result4_Color.x * _LeftLegColor +
-        result4_Color.y * _LeftLegColor +
-        result4_Color.z * _RightLegColor +
-        result4_Color.w * _RightLegColor;
-
-    fixed3 computeAlbedoPart5 =
-        result5_Color.x * _RightLegColor;
-
-    fixed3 final = normalize(fixed3(
-        computeAlbedoPart1 +
-        computeAlbedoPart2 +
-        computeAlbedoPart3 +
-        computeAlbedoPart4 +
-        computeAlbedoPart5));
-
-    o.Albedo = final;
+    o.Albedo = normalize(_colorResult);
 }
 // @endblock
 
