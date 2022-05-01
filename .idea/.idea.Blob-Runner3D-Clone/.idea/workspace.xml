@@ -10,12 +10,15 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../2020.3.19f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.4/Runtime/Behaviours/CinemachineMixingCamera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CA496B8C-9345-4B2F-9B99-24292C19379F/38/03895cf8/Material.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.4/Runtime/Behaviours/CinemachineBlendListCamera.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/_Main/Scripts/GamePlay/Player/PController.cs" />
       <option value="$PROJECT_DIR$/Assets/_Main/Shader/TransformProvider_Light.shader" />
+      <option value="$PROJECT_DIR$/Assets/_Main/Shader/TransformProvider.cs" />
+      <option value="$PROJECT_DIR$/Assets/_Main/Shader/TransformProvider.shader" />
     </changedPaths>
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">

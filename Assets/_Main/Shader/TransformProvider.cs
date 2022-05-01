@@ -13,11 +13,6 @@ public class TransformProvider : MonoBehaviour
     [SerializeField] private Renderer targetRenderer = null;
 
     [SerializeField] private NameTransformPair[] pairs;
-    
-    private void Start()
-    {
-        Application.targetFrameRate = 60;
-    }
 
     private void Update()
     {
@@ -35,7 +30,8 @@ public class TransformProvider : MonoBehaviour
         {
             var pos = pair.transform.position;
             var rot = pair.transform.rotation;
-            var mat = Matrix4x4.TRS(pos, rot, Vector3.one);
+            var scale = pair.transform.localScale;
+            var mat = Matrix4x4.TRS(pos, rot, scale);
             var invMat = Matrix4x4.Inverse(mat);
             material.SetMatrix(pair.name, invMat);
         }
