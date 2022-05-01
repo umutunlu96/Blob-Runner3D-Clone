@@ -67,114 +67,98 @@ CGINCLUDE
 // from TransformProvider script
 float4x4 _Head;
 float4x4 _TorsoUpper;
-float4x4 _TorsoMid;
 float4x4 _TorsoLower;
-float4x4 _TorsoMidExtra;
+
 float4x4 _LeftArmUpper;
-float4x4 _LeftArmMid;
 float4x4 _LeftArmLower;
+
 float4x4 _RightArmUpper;
-float4x4 _RightArmMid;
 float4x4 _RightArmLower;
+
 float4x4 _LeftLegUpper;
 float4x4 _LeftLegLower;
-float4x4 _LeftLegMid;
+
 float4x4 _RightLegUpper;
 float4x4 _RightLegLower;
-float4x4 _RightLegMid;
 
 float _Smooth;
 
 // Global Variables
 
     float4 headPos;
+
     float4 torsoUpperPos;
-    float4 torsoMidPos;
     float4 torsoLowerPos;
-    float4 torsoMidExtraPos;
+
     float4 leftArmUpperPos; 
-    float4 leftArmMidPos;
     float4 leftArmLowerPos;
+
     float4 rightArmUpperPos;
-    float4 rightArmMidPos;
     float4 rightArmLowerPos;
+
     float4 leftLegUpperPos; 
-    float4 leftLegLowerPos; 
-    float4 leftLegMidPos;
+    float4 leftLegLowerPos;
+
     float4 rightLegUpperPos;
     float4 rightLegLowerPos;
-    float4 rightLegMidPos;
 
     float head;
+
     float torsoUpper;
-    float torsoMid;
     float torsoLower; 
-    float torsoMidExtra;
     
-    float leftArmUpper; 
-    float leftArmMid; 
+    float leftArmUpper;
     float leftArmLower;
     
     float rightArmUpper;
-    float rightArmMid;
     float rightArmLower;
     
     float leftLegUpper;
     float leftLegLower;
-    float leftLegMid;
     
     float rightLegUpper;
     float rightLegLower;
-    float rightLegMid;
 
     float result;
 
 inline float DistanceFunction(float3 wpos)
 {
     headPos = mul(_Head, float4(wpos, 1.0));
+    
     torsoUpperPos = mul(_TorsoUpper, float4(wpos, 1.0));
-    torsoMidPos = mul(_TorsoMid, float4(wpos, 1.0));
     torsoLowerPos = mul(_TorsoLower, float4(wpos, 1.0));
-    torsoMidExtraPos = mul(_TorsoMidExtra, float4(wpos, 1.0));
+    
     leftArmUpperPos = mul(_LeftArmUpper, float4(wpos, 1.0));
-    leftArmMidPos = mul(_LeftArmMid, float4(wpos, 1.0));
     leftArmLowerPos = mul(_LeftArmLower, float4(wpos, 1.0));
+    
     rightArmUpperPos = mul(_RightArmUpper, float4(wpos, 1.0));
-    rightArmMidPos = mul(_RightArmMid, float4(wpos, 1.0));
     rightArmLowerPos = mul(_RightArmLower, float4(wpos, 1.0));
+    
     leftLegUpperPos = mul(_LeftLegUpper, float4(wpos, 1.0));
     leftLegLowerPos = mul(_LeftLegLower, float4(wpos, 1.0));
-    leftLegMidPos = mul(_LeftLegMid, float4(wpos, 1.0));
+    
     rightLegUpperPos = mul(_RightLegUpper, float4(wpos, 1.0));
     rightLegLowerPos = mul(_RightLegLower, float4(wpos, 1.0));
-    rightLegMidPos = mul(_RightLegMid, float4(wpos, 1.0));
 
     head = Sphere(headPos, 0.1F);
     torsoUpper = Capsule(torsoUpperPos, float3(0, 0, 0), float3(0, .15, 0), 0.125F);
-    torsoMid = Sphere(torsoMidPos, 0.125F);
     torsoLower = Sphere(torsoLowerPos, 0.16F);
-    torsoMidExtra =  Sphere(torsoMidExtraPos, 0.16F);
     
     leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), 0.075F);
-    leftArmMid =  Sphere(leftArmMidPos, 0.04F);
     leftArmLower = Capsule(leftArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), 0.05F);
     
     rightArmUpper = Capsule(rightArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), 0.075F);
-    rightArmMid =  Sphere(rightArmMidPos, 0.045F);
     rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), 0.05F);
     
     leftLegUpper = Capsule(leftLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), 0.07F);
     leftLegLower = Capsule(leftLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), 0.07F);
-    leftLegMid =  Sphere(leftLegMidPos, 0.075F);
     
     rightLegUpper = Capsule(rightLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), 0.07F);
     rightLegLower = Capsule(rightLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), 0.07F);
-    rightLegMid =  Sphere(rightLegMidPos, 0.06F);
 
     result = SmoothMin(torsoUpper, torsoLower, _Smooth);
     result = SmoothMin(result, head, _Smooth);
-    result = SmoothMin(result, torsoMid, _Smooth);
-    result = SmoothMin(result, torsoMidExtra, _Smooth);
+    result = SmoothMin(result, torsoUpper, _Smooth);
     result = SmoothMin(result, leftArmUpper, _Smooth);
     result = SmoothMin(result, leftArmLower, _Smooth);
     result = SmoothMin(result, rightArmUpper, _Smooth);
@@ -183,10 +167,6 @@ inline float DistanceFunction(float3 wpos)
     result = SmoothMin(result, leftLegLower, _Smooth);
     result = SmoothMin(result, rightLegUpper, _Smooth);
     result = SmoothMin(result, rightLegLower, _Smooth);
-    result = SmoothMin(result, leftArmMid, _Smooth);
-    result = SmoothMin(result, rightArmMid, _Smooth);
-    result = SmoothMin(result, leftLegMid, _Smooth);
-    result = SmoothMin(result, rightLegMid, _Smooth);
     
     return result;
 }
@@ -201,28 +181,22 @@ float4 _RightArmColor;
 float4 _LeftLegColor;
 float4 _RightLegColor;
 
-fixed3 _colorResult;
+//fixed3 _colorResult;
 
 inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 {
     // _colorResult =
     //     (4 / head) * _HeadColor +
     //     (4 / torsoUpper) * _TorsoColor +
-    //     (4 / torsoMid) * _TorsoColor +
     //     (4 / torsoLower) * _TorsoColor +
-    //     (4 / torsoMidExtra) * _TorsoColor +
     //     (4 / leftArmUpper) * _LeftArmColor +
-    //     (4 / leftArmMid) * _LeftArmColor +
     //     (4 / leftArmLower) * _LeftArmColor +
     //     (4 / rightArmUpper) * _RightArmColor +
-    //     (4 / rightArmMid) * _RightArmColor +
     //     (4 / rightArmLower) * _RightArmColor +
     //     (4 / leftLegUpper) * _LeftLegColor +
     //     (4 / leftLegLower) * _LeftLegColor +
-    //     (4 / leftLegMid) * _LeftLegColor +
     //     (4 / rightLegUpper) * _RightLegColor +
-    //     (4 / rightLegLower) * _RightLegColor +
-    //     (4 / rightLegMid) * _RightLegColor;
+    //     (4 / rightLegLower) * _RightLegColor;
 
     o.Albedo = normalize(_TorsoColor);
 }

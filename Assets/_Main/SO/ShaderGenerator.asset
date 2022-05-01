@@ -141,7 +141,7 @@ MonoBehaviour:
       * _LeftLegColor +\r\n        (4 / leftLegLower) * _LeftLegColor +\r\n       
       (4 / leftLegMid) * _LeftLegColor +\r\n        (4 / rightLegUpper) * _RightLegColor
       +\r\n        (4 / rightLegLower) * _RightLegColor +\r\n        (4 / rightLegMid)
-      * _RightLegColor;\r\n\r\n    o.Albedo = normalize(_colorResult);\r\n}\r"
+      * _RightLegColor;\r\n\r\n    o.Albedo = normalize(_TorsoColor);\r\n}\r"
     folded: 0
   constants: {fileID: 11400000, guid: 9c8b2f5a7a56c4e21bee7ca4ccfc6640, type: 2}
   basicFolded: 1

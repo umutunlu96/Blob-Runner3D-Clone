@@ -22,7 +22,7 @@ Material:
     m_Floats:
     - _Cull: 2
     - _DistanceMultiplier: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.8
     - _HeadScale: 0.1
     - _LeftArmLowerScale: 0.05
     - _LeftArmMidScale: 0.04
@@ -30,9 +30,9 @@ Material:
     - _LeftLegLowerScale: 0.07
     - _LeftLegMidScale: 0.075
     - _LeftLegUpperScale: 0.07
-    - _Loop: 20
+    - _Loop: 100
     - _Metallic: 0
-    - _MinDistance: 0.0243
+    - _MinDistance: 0.025
     - _NormalDelta: 0.0001
     - _RightArmLowerScale: 0.05
     - _RightArmMidScale: 0.045

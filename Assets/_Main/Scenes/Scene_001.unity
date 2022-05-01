@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 5592373312757432244}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -2295,12 +2295,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039842502}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2049858488 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8117808517513198048, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8035518201791926037}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5592373312757432244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2458961956103106721, guid: 588ef6bf278b7db47b509d5e3de3b75e,
@@ -2314,11 +2308,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 885116865}
     m_Modifications:
-    - target: {fileID: 1063610351518645025, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2458961956103106721, guid: 588ef6bf278b7db47b509d5e3de3b75e,
         type: 3}
       propertyPath: m_RootOrder
@@ -2378,41 +2367,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4432288161802976106, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6873056387454926386, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7576081762231392315, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117808517513198048, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117808517513198048, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117808517513198050, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: targetRenderer
-      value: 
-      objectReference: {fileID: 2049858488}
-    - target: {fileID: 8117808517513198054, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 588ef6bf278b7db47b509d5e3de3b75e, type: 3}
