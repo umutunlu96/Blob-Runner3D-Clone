@@ -80,7 +80,7 @@ Material:
     - _Sphere1Color: {r: 1, g: 1, b: 1, a: 1}
     - _SphereColor: {r: 1, g: 0.6217325, b: 0, a: 1}
     - _TorseUpperColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TorsoColor: {r: 0.9522524, g: 1, b: 0, a: 1}
+    - _TorsoColor: {r: 0, g: 1, b: 0.10806155, a: 1}
     - _TorsoDownColor: {r: 1, g: 1, b: 1, a: 1}
     - _TorsoLowerColor: {r: 1, g: 0.627451, b: 0, a: 1}
     - _TorsoLowerExtraColor: {r: 0, g: 0.39009237, b: 1, a: 1}

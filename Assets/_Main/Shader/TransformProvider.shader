@@ -205,26 +205,26 @@ fixed3 _colorResult;
 
 inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 {
-    _colorResult =
-        (4 / head) * _HeadColor +
-        (4 / torsoUpper) * _TorsoColor +
-        (4 / torsoMid) * _TorsoColor +
-        (4 / torsoLower) * _TorsoColor +
-        (4 / torsoMidExtra) * _TorsoColor +
-        (4 / leftArmUpper) * _LeftArmColor +
-        (4 / leftArmMid) * _LeftArmColor +
-        (4 / leftArmLower) * _LeftArmColor +
-        (4 / rightArmUpper) * _RightArmColor +
-        (4 / rightArmMid) * _RightArmColor +
-        (4 / rightArmLower) * _RightArmColor +
-        (4 / leftLegUpper) * _LeftLegColor +
-        (4 / leftLegLower) * _LeftLegColor +
-        (4 / leftLegMid) * _LeftLegColor +
-        (4 / rightLegUpper) * _RightLegColor +
-        (4 / rightLegLower) * _RightLegColor +
-        (4 / rightLegMid) * _RightLegColor;
+    // _colorResult =
+    //     (4 / head) * _HeadColor +
+    //     (4 / torsoUpper) * _TorsoColor +
+    //     (4 / torsoMid) * _TorsoColor +
+    //     (4 / torsoLower) * _TorsoColor +
+    //     (4 / torsoMidExtra) * _TorsoColor +
+    //     (4 / leftArmUpper) * _LeftArmColor +
+    //     (4 / leftArmMid) * _LeftArmColor +
+    //     (4 / leftArmLower) * _LeftArmColor +
+    //     (4 / rightArmUpper) * _RightArmColor +
+    //     (4 / rightArmMid) * _RightArmColor +
+    //     (4 / rightArmLower) * _RightArmColor +
+    //     (4 / leftLegUpper) * _LeftLegColor +
+    //     (4 / leftLegLower) * _LeftLegColor +
+    //     (4 / leftLegMid) * _LeftLegColor +
+    //     (4 / rightLegUpper) * _RightLegColor +
+    //     (4 / rightLegLower) * _RightLegColor +
+    //     (4 / rightLegMid) * _RightLegColor;
 
-    o.Albedo = normalize(_colorResult);
+    o.Albedo = normalize(_TorsoColor);
 }
 // @endblock
 
