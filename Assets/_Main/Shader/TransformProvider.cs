@@ -8,6 +8,10 @@ public class TransformProvider : MonoBehaviour
     {
         public string name;
         public Transform transform;
+
+        public Vector3 Position => transform.position;
+        public Quaternion Rotation => transform.rotation;
+        public Vector3 Scale => transform.localScale;
     }
     
     [SerializeField] private Renderer targetRenderer = null;
@@ -28,10 +32,7 @@ public class TransformProvider : MonoBehaviour
         
         foreach (var pair in pairs)
         {
-            var pos = pair.transform.position;
-            var rot = pair.transform.rotation;
-            var scale = pair.transform.localScale;
-            var mat = Matrix4x4.TRS(pos, rot, scale);
+            var mat = Matrix4x4.TRS(pair.Position, pair.Rotation, pair.Scale);
             var invMat = Matrix4x4.Inverse(mat);
             material.SetMatrix(pair.name, invMat);
         }
